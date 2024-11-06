@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mental_health_tracker/screens/moodentry_form.dart';
+import 'package:mental_health_tracker/widgets/left_drawer.dart';
+import 'package:mental_health_tracker/widgets/mood_card.dart';
+
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
@@ -29,7 +33,11 @@ class MyHomePage extends StatelessWidget {
         ),
         // Warna latar belakang AppBar diambil dari skema warna tema aplikasi.
         backgroundColor: Theme.of(context).colorScheme.primary,
+        // Mengganti warna icon drawer menjadi putih
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
+      // Masukkan drawer sebagai parameter nilai drawer dari widget Scaffold
+      drawer: const LeftDrawer(),
       // Body halaman dengan padding di sekelilingnya.
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -54,7 +62,6 @@ class MyHomePage extends StatelessWidget {
             Center(
               child: Column(
                 // Menyusun teks dan grid item secara vertikal.
-
                 children: [
                   // Menampilkan teks sambutan dengan gaya tebal dan ukuran 18.
                   const Padding(
@@ -126,64 +133,73 @@ class InfoCard extends StatelessWidget {
   }
 }
 
-class ItemHomepage {
-     final String name;
-     final IconData icon;
+// class ItemHomepage {
+//      final String name;
+//      final IconData icon;
 
-     ItemHomepage(this.name, this.icon);
-}
+//      ItemHomepage(this.name, this.icon);
+// }
 
-class ItemCard extends StatelessWidget {
-  // Menampilkan kartu dengan ikon dan nama.
+// class ItemCard extends StatelessWidget {
+//   // Menampilkan kartu dengan ikon dan nama.
 
-  final ItemHomepage item; 
+//   final ItemHomepage item; 
   
-  const ItemCard(this.item, {super.key}); 
+//   const ItemCard(this.item, {super.key}); 
 
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      // Menentukan warna latar belakang dari tema aplikasi.
-      color: Theme.of(context).colorScheme.secondary,
-      // Membuat sudut kartu melengkung.
-      borderRadius: BorderRadius.circular(12),
+//   @override
+//   Widget build(BuildContext context) {
+//     return Material(
+//       // Menentukan warna latar belakang dari tema aplikasi.
+//       color: Theme.of(context).colorScheme.secondary,
+//       // Membuat sudut kartu melengkung.
+//       borderRadius: BorderRadius.circular(12),
       
-      child: InkWell(
-        // Aksi ketika kartu ditekan.
-        onTap: () {
-          // Menampilkan pesan SnackBar saat kartu ditekan.
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(content: Text("Kamu telah menekan tombol ${item.name}!"))
-            );
-        },
-        // Container untuk menyimpan Icon dan Text
-        child: Container(
-          padding: const EdgeInsets.all(8),
-          child: Center(
-            child: Column(
-              // Menyusun ikon dan teks di tengah kartu.
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  item.icon,
-                  color: Colors.white,
-                  size: 30.0,
-                ),
-                const Padding(padding: EdgeInsets.all(3)),
-                Text(
-                  item.name,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
+//       child: InkWell(
+//         // Aksi ketika kartu ditekan.
+//         onTap: () {
+//           // Menampilkan pesan SnackBar saat kartu ditekan.
+//           ScaffoldMessenger.of(context)
+//             ..hideCurrentSnackBar()
+//             ..showSnackBar(
+//               SnackBar(content: Text("Kamu telah menekan tombol ${item.name}!"))
+//             );
+//           // Navigate ke route yang sesuai (tergantung jenis tombol)
+//           if (item.name == "Tambah Mood") {
+//             Navigator.push(
+//               context,
+//               MaterialPageRoute(
+//                 builder: (context) => MoodEntryFormPage(),
+//               ),
+//             );
+//           }
+//         },
+//         // Container untuk menyimpan Icon dan Text
+//         child: Container(
+//           padding: const EdgeInsets.all(8),
+//           child: Center(
+//             child: Column(
+//               // Menyusun ikon dan teks di tengah kartu.
+//               mainAxisAlignment: MainAxisAlignment.center,
+//               children: [
+//                 Icon(
+//                   item.icon,
+//                   color: Colors.white,
+//                   size: 30.0,
+//                 ),
+//                 const Padding(padding: EdgeInsets.all(3)),
+//                 Text(
+//                   item.name,
+//                   textAlign: TextAlign.center,
+//                   style: const TextStyle(color: Colors.white),
+//                 ),
+//               ],
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
   
-}
+// }
 
